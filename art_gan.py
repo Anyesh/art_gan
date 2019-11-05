@@ -178,3 +178,6 @@ for epoch in range(EPOCHS):
         cnt += 1
 
         print(f"{epoch} epoch, Discriminator accuracy: {100* discriminator_metric[1]}, Generator accuracy: {100 * generator_metric[1]}")
+
+generator.save(os.path.join('output', "painting_generator.h5"))
+discriminator.save(os.path.join('output', "painting_discriminator.h5"))
