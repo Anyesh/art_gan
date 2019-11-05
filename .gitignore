@@ -1,0 +1,4 @@
+output/
+assets/
+dataset/
+training_data.npy
