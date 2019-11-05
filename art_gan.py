@@ -17,7 +17,7 @@ SAVE_FREQ = 100
 NOISE_SIZE = 200
 
 # Configuration
-EPOCHS = 10000  # number of iterations
+EPOCHS = 50000  # number of iterations
 BATCH_SIZE = 32
 
 GENERATE_RES = 3
