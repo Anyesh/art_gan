@@ -14,10 +14,10 @@ PREVIEW_MARGIN = 4
 SAVE_FREQ = 100
 
 # Size vector to generate images from
-NOISE_SIZE = 100
+NOISE_SIZE = 200
 
 # Configuration
-EPOCHS = 50000  # number of iterations
+EPOCHS = 10000  # number of iterations
 BATCH_SIZE = 32
 
 GENERATE_RES = 3
@@ -78,18 +78,18 @@ def build_generator(noise_size, channels):
     model.add(UpSampling2D())
     model.add(Conv2D(256, kernel_size=3, padding="same"))
     model.add(BatchNormalization(momentum=0.8))
-    model.add(LeakyReLU(alpha=0.2))
+    model.add(Activation("relu"))
 
     model.add(UpSampling2D())
     model.add(Conv2D(256, kernel_size=3, padding="same"))
     model.add(BatchNormalization(momentum=0.8))
-    model.add(LeakyReLU(alpha=0.2))
+    model.add(Activation("relu"))
 
     for i in range(GENERATE_RES):
         model.add(UpSampling2D())
         model.add(Conv2D(256, kernel_size=3, padding="same"))
         model.add(BatchNormalization(momentum=0.8))
-        model.add(LeakyReLU(alpha=0.2))
+        model.add(Activation("relu"))
 
     model.summary()
     model.add(Conv2D(channels, kernel_size=3, padding="same"))
