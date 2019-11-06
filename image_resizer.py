@@ -21,17 +21,20 @@ training_data = []
 # Pillow's resize method.
 print('resizing...')
 
-for filename in os.listdir(images_path):
-    path = os.path.join(images_path, filename)
-    if os.stat(path).st_size == 3727:
-        pass
-    else:
-        im = Image.open(path)
-        image = im.convert('RGB')
-        image = image.resize(
-            (IMAGE_SIZE, IMAGE_SIZE), Image.ANTIALIAS)
+try:
+    for filename in os.listdir(images_path):
+        path = os.path.join(images_path, filename)
+        if os.stat(path).st_size == 3727:
+            pass
+        else:
+            im = Image.open(path)
+            image = im.convert('RGB')
+            image = image.resize(
+                (IMAGE_SIZE, IMAGE_SIZE), Image.ANTIALIAS)
 
-        training_data.append(np.asarray(image))
+            training_data.append(np.asarray(image))
+except:
+    pass
 
 training_data = np.reshape(
     training_data, (-1, IMAGE_SIZE, IMAGE_SIZE, IMAGE_CHANNELS))
