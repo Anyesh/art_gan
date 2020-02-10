@@ -26,7 +26,7 @@ IMAGE_SIZE = 128  # rows/cols
 IMAGE_CHANNELS = 3
 
 
-training_data = np.load('training_data.npy')
+training_data = np.load('cubism_data.npy')
 
 
 def build_discriminator(image_shape):
@@ -37,28 +37,28 @@ def build_discriminator(image_shape):
                      input_shape=image_shape, padding="same"))
     model.add(LeakyReLU(alpha=0.2))
 
-    model.add(Dropout(0.25))
+    # model.add(Dropout(0.25))
     model.add(Conv2D(64, kernel_size=3, strides=2, padding="same"))
-    model.add(ZeroPadding2D(padding=((0, 1), (0, 1))))
+    # model.add(ZeroPadding2D(padding=((0, 1), (0, 1))))
     model.add(BatchNormalization(momentum=0.8))
     model.add(LeakyReLU(alpha=0.2))
 
-    model.add(Dropout(0.25))
+    # model.add(Dropout(0.25))
     model.add(Conv2D(128, kernel_size=3, strides=2, padding="same"))
     model.add(BatchNormalization(momentum=0.8))
     model.add(LeakyReLU(alpha=0.2))
 
-    model.add(Dropout(0.25))
+    # model.add(Dropout(0.25))
     model.add(Conv2D(256, kernel_size=3, strides=1, padding="same"))
     model.add(BatchNormalization(momentum=0.8))
     model.add(LeakyReLU(alpha=0.2))
 
-    model.add(Dropout(0.25))
+    # model.add(Dropout(0.25))
     model.add(Conv2D(512, kernel_size=3, strides=1, padding="same"))
     model.add(BatchNormalization(momentum=0.8))
     model.add(LeakyReLU(alpha=0.2))
 
-    model.add(Dropout(0.25))
+    # model.add(Dropout(0.25))
     model.add(Flatten())
     model.add(Dense(1, activation='sigmoid'))
 
@@ -179,5 +179,4 @@ for epoch in range(EPOCHS):
 
         print(f"{epoch} epoch, Discriminator accuracy: {100* discriminator_metric[1]}, Generator accuracy: {100 * generator_metric[1]}")
 
-generator.save(os.path.join('output', "painting_generator.h5"))
-discriminator.save(os.path.join('output', "painting_discriminator.h5"))
+generator.save(os.path.join('output', "modern_art_generator.h5"))
