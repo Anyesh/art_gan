@@ -11,7 +11,7 @@ import os
 PREVIEW_ROWS = 4
 PREVIEW_COLS = 7
 PREVIEW_MARGIN = 4
-SAVE_FREQ = 100
+SAVE_FREQ = 500
 
 # Size vector to generate images from
 NOISE_SIZE = 123
@@ -178,5 +178,4 @@ for epoch in range(EPOCHS):
         cnt += 1
 
         print(f"{epoch} epoch, Discriminator accuracy: {100* discriminator_metric[1]}, Generator accuracy: {100 * generator_metric[1]}")
-
-generator.save(os.path.join('output', "modern_art_generator.h5"))
+        generator.save(os.path.join('output', "modern_art_generator.h5"))
