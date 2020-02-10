@@ -14,11 +14,11 @@ PREVIEW_MARGIN = 4
 SAVE_FREQ = 100
 
 # Size vector to generate images from
-NOISE_SIZE = 200
+NOISE_SIZE = 123
 
 # Configuration
 EPOCHS = 2000  # number of iterations
-BATCH_SIZE = 32
+BATCH_SIZE = 64
 
 GENERATE_RES = 3
 IMAGE_SIZE = 128  # rows/cols
