@@ -24,9 +24,7 @@ print('resizing...')
 try:
     for filename in os.listdir(images_path):
         path = os.path.join(images_path, filename)
-        if os.stat(path).st_size == 3727:
-            pass
-        else:
+        if os.stat(path).st_size != 3727:
             im = Image.open(path)
             image = im.convert('RGB')
             image = image.resize(

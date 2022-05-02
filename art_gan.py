@@ -85,7 +85,7 @@ def build_generator(noise_size, channels):
     model.add(BatchNormalization(momentum=0.8))
     model.add(Activation("relu"))
 
-    for i in range(GENERATE_RES):
+    for _ in range(GENERATE_RES):
         model.add(UpSampling2D())
         model.add(Conv2D(256, kernel_size=3, padding="same"))
         model.add(BatchNormalization(momentum=0.8))
